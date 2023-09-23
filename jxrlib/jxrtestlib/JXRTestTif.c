@@ -432,7 +432,7 @@ Cleanup:
     return err;
 }
 
-ERR PKImageEncode_Create_TIF(PKImageEncode** ppIE)
+EXPORT ERR PKImageEncode_Create_TIF(PKImageEncode** ppIE)
 {
     ERR err = WMP_errSuccess;
 

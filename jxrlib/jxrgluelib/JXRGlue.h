@@ -289,7 +289,7 @@ ERR PKFree(void** ppv);
 
 //----------------------------------------------------------------
 //ERR GetPixelInfo(PKPixelFormatGUID enPixelFormat, const PKPixelInfo** ppPI);
-ERR PixelFormatLookup(PKPixelInfo* pPI, U8 uLookupType);
+EXPORT ERR PixelFormatLookup(PKPixelInfo* pPI, U8 uLookupType);
 const PKPixelFormatGUID* GetPixelFormatFromHash(const U8 uPFHash);
 
 ERR GetImageEncodeIID(const char* szExt, const PKIID** ppIID);
@@ -364,7 +364,7 @@ typedef struct tagPKCodecFactory
 ERR PKCodecFactory_CreateCodec(const PKIID* iid, void** ppv);
 ERR PKCreateCodecFactory_Release(PKCodecFactory** ppCFactory);
 
-EXTERN_C ERR PKCreateCodecFactory(PKCodecFactory**, U32);
+EXPORT EXTERN_C ERR PKCreateCodecFactory(PKCodecFactory**, U32);
 
 //================================================================
 
@@ -563,7 +563,7 @@ typedef struct tagPKImageDecode
 } PKImageDecode;
 
 //----------------------------------------------------------------
-ERR PKImageDecode_Create_WMP(PKImageDecode** ppID);
+EXPORT ERR PKImageDecode_Create_WMP(PKImageDecode** ppID);
 
 ERR PKImageDecode_Initialize(PKImageDecode* pID, struct WMPStream* pStream);
 ERR PKImageDecode_GetPixelFormat(PKImageDecode* pID, PKPixelFormatGUID* pPF);
@@ -610,7 +610,7 @@ typedef struct tagPKFormatConverter
 } PKFormatConverter;
 
 //----------------------------------------------------------------
-ERR PKImageEncode_Transcode(PKImageEncode* pIE, PKFormatConverter* pFC, PKRect* pRect);
+EXPORT ERR PKImageEncode_Transcode(PKImageEncode* pIE, PKFormatConverter* pFC, PKRect* pRect);
 ERR PKImageEncode_WriteSource(PKImageEncode* pIE, PKFormatConverter* pFC, PKRect* pRect);
 ERR PKFormatConverter_Initialize(PKFormatConverter* pFC, PKImageDecode* pID, char *pExt, PKPixelFormatGUID enPF);
 ERR PKFormatConverter_InitializeConvert(PKFormatConverter* pFC, const PKPixelFormatGUID enPFFrom,

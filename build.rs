@@ -104,7 +104,7 @@ fn main() {
     if target == "wasm32-unknown-unknown" {
         // We need to manually specify the visibility
         // See https://github.com/rust-lang/rust-bindgen/issues/1941
-        clang_args.extend(&["-isystem", "src/fakelibc", "-fvisibility=default"]);
+        clang_args.extend(&["-isystem", "src/fakelibc"]);
     }
 
     bindgen::Builder::default()

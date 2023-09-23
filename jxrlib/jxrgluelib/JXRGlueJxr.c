@@ -2262,7 +2262,7 @@ Cleanup:
 
 
 
-ERR PKImageDecode_Create_WMP(PKImageDecode** ppID)
+EXPORT ERR PKImageDecode_Create_WMP(PKImageDecode** ppID)
 {
     ERR err = WMP_errSuccess;
     PKImageDecode* pID = NULL;

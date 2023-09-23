@@ -214,7 +214,7 @@ static const PKPixelInfo pixelInfo[] =
 
 //----------------------------------------------------------------
 //ERR GetPixelInfo(PKPixelFormatGUID enPixelFormat, const PKPixelInfo** ppPI)
-ERR PixelFormatLookup(PKPixelInfo* pPI, U8 uLookupType)
+EXPORT ERR PixelFormatLookup(PKPixelInfo* pPI, U8 uLookupType)
 {
     ERR err = WMP_errSuccess;
     size_t i;
@@ -462,7 +462,7 @@ Cleanup:
     return err;
 }
 
-ERR PKCreateCodecFactory(PKCodecFactory** ppCFactory, U32 uVersion)
+EXPORT ERR PKCreateCodecFactory(PKCodecFactory** ppCFactory, U32 uVersion)
 {
     ERR err = WMP_errSuccess;
     PKCodecFactory* pCFactory = NULL;
@@ -665,7 +665,7 @@ ERR PKImageEncode_WritePixelsBandedEnd(PKImageEncode* pEncoder)
 }
 
 
-ERR PKImageEncode_Transcode(
+EXPORT ERR PKImageEncode_Transcode(
     PKImageEncode* pIE,
     PKFormatConverter* pFC,
     PKRect* pRect)

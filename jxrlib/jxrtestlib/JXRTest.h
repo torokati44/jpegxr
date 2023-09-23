@@ -61,7 +61,7 @@ EXTERN_C ERR PKCreateTestFactory(PKCodecFactory**, U32);
 //----------------------------------------------------------------
 ERR PKImageEncode_Create_BMP(PKImageEncode** ppIE);
 ERR PKImageEncode_Create_PNM(PKImageEncode** ppIE);
-ERR PKImageEncode_Create_TIF(PKImageEncode** ppIE);
+EXPORT ERR PKImageEncode_Create_TIF(PKImageEncode** ppIE);
 ERR PKImageEncode_Create_HDR(PKImageEncode** ppIE);
 ERR PKImageEncode_Create_IYUV(PKImageEncode** ppIE);
 ERR PKImageEncode_Create_YUV422(PKImageEncode** ppIE);
