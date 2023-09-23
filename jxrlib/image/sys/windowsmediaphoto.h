@@ -511,7 +511,11 @@ EXTERN_C Int WMPhotoDetile(
     CWMDetilingParam * pParam   // detiling parameters
 );
 
-#define EXPORT  __attribute__( ( visibility( "default" ) ) )
+#if _MSC_VER
+#define EXPORT __declspec(dllexport)
+#else
+#define EXPORT __attribute__((visibility("default")))
+#endif
 
 #endif // WMI_WINDOWSMEDIAPHOTO_H
 
