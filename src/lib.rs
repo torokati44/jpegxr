@@ -958,7 +958,7 @@ where
             info.raw.pGUIDPixFmt = orig_pixel_format.guid();
             call(PixelFormatLookup(&mut info.raw, LOOKUP_FORWARD as u8))?;
             call(PixelFormatLookup(&mut info.raw, LOOKUP_BACKWARD_TIF as u8))?;
-            let output_format = *info.raw.pGUIDPixFmt;
+            let mut output_format = *info.raw.pGUIDPixFmt;
 
             call(PKCreateCodecFactory(&mut codec_factory, WMP_SDK_VERSION))
                 .expect("Failed to make codec");
@@ -966,11 +966,13 @@ where
                 &mut converter,
             ))
             .expect("Failed to create format converter");
-            call((*converter).Initialize.unwrap()(
+
+            call(Ruffle_PKFormatConverterInitialize(
+                (*converter).Initialize,
                 converter,
                 self.raw,
                 tiff_string.as_ptr() as *mut _,
-                output_format,
+                &mut output_format,
             ))
             .expect("Failed to initialze converter");
             call(PKImageEncode_Create_TIF(&mut encoder)).expect("Failed to create tiff encoder");
@@ -982,8 +984,12 @@ where
                 0,
             ))
             .expect("Failed to init bitmap encoder");
-            call((*encoder).SetPixelFormat.unwrap()(encoder, output_format))
-                .expect("Failed to set pixel format");
+            call(Ruffle_SetPixelFormat(
+                (*encoder).SetPixelFormat,
+                encoder,
+                &mut output_format,
+            ))
+            .expect("Failed to set pixel format");
 
             (*encoder).WMP.wmiSCP.bBlackWhite = (*self.raw).WMP.wmiSCP.bBlackWhite;
 

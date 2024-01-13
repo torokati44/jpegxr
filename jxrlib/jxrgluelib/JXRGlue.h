@@ -636,6 +636,16 @@ ERR PKFree(void** ppv);
 ERR PKAllocAligned(void** ppv, size_t cb, size_t iAlign);
 ERR PKFreeAligned(void** ppv);
 
+// These are wrapper functions that only use pointers/primitive types as their arguments
+// and then call the original function pointer. This works around a bug in rust's "C" abi for wasm
+// when passing in a C struct by value:
+// https://github.com/rust-lang/rust/issues/71871
+//
+// In particular, we take in `PKPixelFormatGUID*` - the original function takes in the struct `PKPixelFormatGUID`,
+// which will be given the wrong ABI on the Rust side.
+EXPORT ERR Ruffle_PKFormatConverterInitialize(ERR (*Initialize)(PKFormatConverter*, PKImageDecode*, char *pExt, PKPixelFormatGUID), PKFormatConverter* pFC, PKImageDecode* pID, char *pExt, PKPixelFormatGUID *enPF);
+EXPORT ERR Ruffle_SetPixelFormat(ERR (*SetPixelFormat)(PKImageEncode*, PKPixelFormatGUID), PKImageEncode* pIE, PKPixelFormatGUID *enPixelFormat);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

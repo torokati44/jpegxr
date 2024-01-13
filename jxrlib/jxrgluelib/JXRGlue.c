@@ -928,3 +928,10 @@ Cleanup:
     return err;
 }
 
+EXPORT ERR Ruffle_PKFormatConverterInitialize(ERR (*Initialize)(PKFormatConverter*, PKImageDecode*, char *pExt, PKPixelFormatGUID), PKFormatConverter* pFC, PKImageDecode* pID, char *pExt, PKPixelFormatGUID *enPF) {
+    return Initialize(pFC, pID, pExt, *enPF);
+}
+
+EXPORT ERR Ruffle_SetPixelFormat(ERR (*SetPixelFormat)(PKImageEncode*, PKPixelFormatGUID), PKImageEncode* pIE, PKPixelFormatGUID *enPixelFormat) {
+    return SetPixelFormat(pIE, *enPixelFormat);
+}

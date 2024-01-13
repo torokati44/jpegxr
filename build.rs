@@ -110,7 +110,7 @@ fn main() {
     bindgen::Builder::default()
         .header("jxrlib/jxrgluelib/JXRGlue.h")
         .header("jxrlib/jxrtestlib/JXRTest.h")
-        .allowlist_function("^(WMP|PK|PixelFormatLookup|GetPixelFormatFromHash|GetImageEncodeIID|GetImageDecodeIID|FreeDescMetadata).*")
+        .allowlist_function("^(WMP|PK|PixelFormatLookup|GetPixelFormatFromHash|GetImageEncodeIID|GetImageDecodeIID|FreeDescMetadata|Ruffle).*")
         .allowlist_var("^(WMP|PK|LOOKUP|GUID_PK|IID).*")
         .allowlist_type("^(WMP|PK|ERR|BITDEPTH|BD_|BITDEPTH_BITS|COLORFORMAT).*")
         .clang_args(clang_args)
