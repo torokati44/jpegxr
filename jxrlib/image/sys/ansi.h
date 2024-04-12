@@ -48,8 +48,8 @@
 // Note these are modified from the original library,
 // which made its own defs that were wrong on Linux.
 #include <stdint.h>
-#define UINTPTR_T uintptr_t
-#define INTPTR_T intptr_t
+#define UINTPTR_T unsigned long
+#define INTPTR_T long
 
 
 //================================
