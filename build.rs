@@ -74,6 +74,7 @@ fn main() {
         .flag_if_supported("-Wno-parentheses")
         .flag_if_supported("-Wno-misleading-indentation")
         .flag_if_supported("-Wno-unused-but-set-variable")
+        .flag_if_supported("-Wno-incompatible-pointer-types")
         .opt_level(2);
 
     let target = std::env::var("TARGET").unwrap();
